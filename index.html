@@ -23,8 +23,9 @@ button.chip { border-radius:999px; padding:7px 12px; font-size:12px; }
 button.chip.on { background:var(--orange); color:#140800; border-color:transparent; font-weight:700; }
 .wrap { max-width:760px; margin:0 auto; padding:14px 14px 130px; }
 .hidden { display:none !important; }
-.levels { display:flex; gap:8px; overflow:auto; padding:2px 0 12px; }
-.sections { display:flex; gap:8px; overflow:auto; padding-bottom:14px; }
+.levels,.sections { display:flex; gap:8px; overflow:auto; }
+.levels { padding:2px 0 12px; }
+.sections { padding-bottom:14px; }
 .chapter { margin-bottom:22px; }
 .chapter h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 10px; }
 .lesson-row { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:12px 14px; margin-bottom:8px; width:100%; text-align:left; }
@@ -39,7 +40,7 @@ button.chip.on { background:var(--orange); color:#140800; border-color:transpare
 .ln.on { background:var(--orange-dim); color:var(--orange); }
 .code { font-family:ui-monospace,Menlo,monospace; font-size:13px; padding:9px 10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; min-height:42px; }
 .slot { min-width:48px; min-height:28px; padding:4px 8px; border-radius:8px; border:1.5px dashed #3a3a46; color:#6b6b78; background:#0c0c10; }
-.slot.filled, .slot.locked { border-style:solid; border-color:#3d2a20; background:var(--orange-dim); color:var(--orange); }
+.slot.filled,.slot.locked { border-style:solid; border-color:#3d2a20; background:var(--orange-dim); color:var(--orange); }
 .slot.locked { border-color:#1d3a2c; background:var(--green-dim); color:var(--green); }
 .slot.wrong { border-color:var(--red); background:var(--red-dim); color:var(--red); animation:shake .28s; }
 .fixed { color:#cfcfd8; }
@@ -69,7 +70,8 @@ td.tok { color:var(--orange); font-family:ui-monospace,Menlo,monospace; width:32
 </header>
 <div class="wrap" id="home"></div>
 <div class="wrap hidden" id="play"></div>
-<script src="lessons.js"></script>
+<script src="lessons1.js"></script>
+<script src="lessons2.js"></script>
 <script src="engine.js"></script>
 </body>
 </html>
