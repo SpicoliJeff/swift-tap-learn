@@ -3,75 +3,70 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Tap to Code · 100 Days of Swift</title>
+<title>Tap to Code</title>
 <style>
-:root {
-  --bg:#0b0b0d; --card:#16161a; --card2:#1c1c22; --line:#2a2a32;
-  --text:#f2f2f5; --muted:#9a9aa8; --orange:#ff6b2c; --orange-dim:#3a1f14;
-  --green:#3dd68c; --green-dim:#123024; --red:#ff5a6a; --red-dim:#3a1418;
-}
+:root { --bg:#0b0b0d; --card:#16161a; --line:#2a2a32; --text:#f2f2f5; --muted:#9a9aa8; --orange:#ff6b2c; --orange-dim:#3a1f14; --green:#3dd68c; --green-dim:#123024; --red:#ff5a6a; --red-dim:#3a1418; }
 * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-html,body { margin:0; background:var(--bg); color:var(--text); font-family:ui-sans-serif,system-ui,-apple-system,sans-serif; }
-body { min-height:100dvh; padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
-header.app { position:sticky; top:0; z-index:20; background:rgba(11,11,13,.94); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); padding:12px 14px; display:flex; align-items:center; gap:10px; }
-header.app h1 { font-size:16px; margin:0; font-weight:650; }
-header.app .sub { font-size:12px; color:var(--muted); }
-button { background:var(--card2); color:var(--text); border:1px solid var(--line); border-radius:12px; padding:8px 12px; font-size:14px; cursor:pointer; }
+html,body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,system-ui,sans-serif; }
+body { min-height:100dvh; }
+header.app { position:sticky; top:0; z-index:20; background:#0b0b0d; border-bottom:1px solid var(--line); padding:12px 14px; display:flex; align-items:center; gap:10px; }
+h1 { font-size:16px; margin:0; }
+.sub { font-size:12px; color:var(--muted); }
+button { background:#1c1c22; color:var(--text); border:1px solid var(--line); border-radius:12px; padding:8px 12px; font-size:14px; }
 button.primary { background:var(--orange); border-color:transparent; color:#140800; font-weight:700; }
 button.ghost { background:transparent; }
 button.chip { border-radius:999px; padding:7px 12px; font-size:12px; }
 button.chip.on { background:var(--orange); color:#140800; border-color:transparent; font-weight:700; }
 .wrap { max-width:760px; margin:0 auto; padding:14px 14px 130px; }
 .hidden { display:none !important; }
-.levels,.sections { display:flex; gap:8px; overflow:auto; }
-.levels { padding:2px 0 12px; }
-.sections { padding-bottom:14px; }
-.chapter { margin-bottom:22px; }
-.chapter h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 10px; }
+.levels,.sections { display:flex; gap:8px; overflow:auto; padding-bottom:12px; }
+.chapter h2 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
 .lesson-row { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:12px 14px; margin-bottom:8px; width:100%; text-align:left; }
-.lesson-row .num { width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:var(--orange-dim); color:var(--orange); font-weight:700; font-size:11px; flex-shrink:0; }
+.lesson-row .num { width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:var(--orange-dim); color:var(--orange); font-weight:700; font-size:11px; }
 .lesson-row.done .num { background:var(--green-dim); color:var(--green); }
-.lesson-row .t { font-weight:600; font-size:15px; }
-.lesson-row .d { font-size:12px; color:var(--muted); margin-top:2px; }
-.prompt { color:var(--muted); font-size:13px; margin:0 0 12px; line-height:1.45; }
+.lesson-row .t { font-weight:600; }
+.lesson-row .d { font-size:12px; color:var(--muted); }
+.prompt { color:var(--muted); font-size:13px; }
 .canvas { background:#101014; border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-bottom:12px; }
 .row { display:grid; grid-template-columns:44px 1fr; border-bottom:1px solid var(--line); }
-.ln { display:grid; place-items:center; color:var(--muted); font-size:11px; background:#0e0e12; border-right:1px solid var(--line); }
+.ln { display:grid; place-items:center; color:var(--muted); font-size:11px; background:#0e0e12; }
 .ln.on { background:var(--orange-dim); color:var(--orange); }
-.code { font-family:ui-monospace,Menlo,monospace; font-size:13px; padding:9px 10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; min-height:42px; }
-.slot { min-width:48px; min-height:28px; padding:4px 8px; border-radius:8px; border:1.5px dashed #3a3a46; color:#6b6b78; background:#0c0c10; }
-.slot.filled,.slot.locked { border-style:solid; border-color:#3d2a20; background:var(--orange-dim); color:var(--orange); }
-.slot.locked { border-color:#1d3a2c; background:var(--green-dim); color:var(--green); }
-.slot.wrong { border-color:var(--red); background:var(--red-dim); color:var(--red); animation:shake .28s; }
-.fixed { color:#cfcfd8; }
-@keyframes shake { 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+.code { font-family:ui-monospace,Menlo,monospace; font-size:13px; padding:9px 10px; display:flex; flex-wrap:wrap; gap:6px; }
+.slot { min-width:48px; min-height:28px; padding:4px 8px; border-radius:8px; border:1.5px dashed #3a3a46; color:#6b6b78; }
+.slot.filled,.slot.locked { border-style:solid; background:var(--orange-dim); color:var(--orange); border-color:#3d2a20; }
+.slot.locked { background:var(--green-dim); color:var(--green); border-color:#1d3a2c; }
+.slot.wrong { border-color:var(--red); background:var(--red-dim); color:var(--red); }
 .tray { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; }
-.tile { background:var(--card2); border:1px solid #32323c; color:var(--orange); font-family:ui-monospace,Menlo,monospace; font-size:13px; padding:9px 11px; border-radius:12px; }
-.tile.used { opacity:.28; pointer-events:none; }
+.tile { background:#1c1c22; border:1px solid #32323c; color:var(--orange); font-family:ui-monospace,Menlo,monospace; padding:9px 11px; border-radius:12px; }
+.tile.used { opacity:.28; }
 .panel { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:14px; margin-top:10px; }
-.panel h3 { margin:0 0 8px; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
-.panel .title { font-size:16px; font-weight:700; margin-bottom:6px; }
-.panel p { margin:0; color:#d8d8e0; font-size:14px; line-height:1.5; }
 .err { color:var(--red); }
-.win { background:var(--green-dim); border:1px solid #1f6b45; color:var(--green); border-radius:14px; padding:12px 14px; margin:10px 0; font-weight:650; }
-table { width:100%; border-collapse:collapse; margin-top:8px; font-size:13px; }
-td { padding:8px 6px; border-top:1px solid var(--line); vertical-align:top; }
-td.tok { color:var(--orange); font-family:ui-monospace,Menlo,monospace; width:32%; }
-.actions { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.win { background:var(--green-dim); border:1px solid #1f6b45; color:var(--green); border-radius:14px; padding:12px; margin:10px 0; }
+.actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+td.tok { color:var(--orange); font-family:ui-monospace,Menlo,monospace; }
 </style>
 </head>
 <body>
 <header class="app">
-  <button class="ghost" id="backBtn" type="button">‹</button>
+  <button class="ghost hidden" id="backBtn" type="button">‹</button>
   <div>
     <h1 id="hdrTitle">Tap to Code</h1>
-    <div class="sub" id="hdrSub">100 Days of Swift path · tap every piece</div>
+    <div class="sub" id="hdrSub">100 Days of Swift path</div>
   </div>
 </header>
-<div class="wrap" id="home"></div>
+<div class="wrap" id="home"><p class="prompt">Loading lessons…</p></div>
 <div class="wrap hidden" id="play"></div>
 <script src="lessons1.js"></script>
 <script src="lessons2.js"></script>
 <script src="engine.js"></script>
+<script>
+window.addEventListener("error", function(e){
+  var h=document.getElementById("home");
+  if(h) h.innerHTML="<p class=err>Script error: "+e.message+"</p><p class=prompt>Open this in Safari if you are inside the Grok app.</p>";
+});
+if(typeof LESSONS==="undefined"){
+  document.getElementById("home").innerHTML="<p class=err>Lessons file did not load.</p>";
+}
+</script>
 </body>
 </html>
